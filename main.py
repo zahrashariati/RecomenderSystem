@@ -7,24 +7,6 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader, TensorDataset
 
 
-# background_image = ".\assortment-cinema-elements-red-background-with-copy-space_23-2148457848.avif"
-
-# # Define the HTML and CSS style
-# background_style = f"""
-#     <style>
-#         body {{
-#             background-image: url("{background_image}");
-#             background-repeat: no-repeat;
-#             background-size: cover;
-#             background-attachment: fixed;
-#             # filter: brightness(0.5);
-#         }}
-#     </style>
-# """
-
-# # Display the HTML and CSS
-# st.markdown(background_style, unsafe_allow_html=True)
-
 st.header("Movie Recommender System")
 
 movies= ["toy story", "run", "dragon", "fight club", "train", "trauma" , "almost famous", "runaway", "dream", "dreamland", "avatar"]
@@ -58,7 +40,7 @@ elif len(selected) ==1:
 elif len(selected) == 2:
     col1 , col2 , col3 , col4 = st.columns([1,2,1,2])
     t1 =movies.iloc[movies_list.index(selected[0])]['imdb_id']
-    
+    t2=movies.iloc[movies_list.index(selected[1])]['imdb_id']
     url = f"http://www.omdbapi.com/?i={t1}&apikey=d5a77f7b"
     re = requests.get(url).json()
     with col1:
